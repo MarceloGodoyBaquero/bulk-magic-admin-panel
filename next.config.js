@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedVariable
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
