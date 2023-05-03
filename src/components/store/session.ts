@@ -1,19 +1,19 @@
-import {create} from "zustand";
-import {persist, createJSONStorage} from "zustand/middleware";
+import {create} from "zustand"
+import {persist, createJSONStorage} from "zustand/middleware"
 
 interface Session {
-  user: User | null;
-  logIn: (user: User) => void;
-  logOut: () => void;
+  user: User | null
+  logIn: (user: User) => void
+  logOut: () => void
 }
 
 interface User {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  accessToken: string;
-  refreshToken: string;
+  id: string
+  name: string
+  email: string
+  phone: string
+  accessToken: string
+  refreshToken: string
 }
 
 export const useSessionStore = create<Session>()(
@@ -27,4 +27,4 @@ export const useSessionStore = create<Session>()(
       storage: createJSONStorage(() => sessionStorage),
     }
   )
-);
+)

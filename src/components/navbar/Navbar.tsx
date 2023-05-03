@@ -4,10 +4,14 @@ import BulkMagicLogo from "./img.png";
 import Image from "next/image";
 import {useSessionStore} from "@/components/store/session";
 import {useRouter} from "next/router";
+import useSessionValidator from "@/components/hooks/useSessionValidator";
+import useSWR from "swr";
 
 export default function NavBar({location}: { location: string }) {
   const {user, logOut} = useSessionStore();
+  useSessionValidator();
   const router = useRouter();
+
   const handleLogOut = () => {
     logOut();
     router.push("/");
@@ -45,14 +49,11 @@ export default function NavBar({location}: { location: string }) {
               onAction={(actionKey) => console.log({actionKey})}>
               <Dropdown.Item key="profile" css={{height: "$18"}}>
                 <Text b color="inherit" css={{d: "flex"}}>
-                  Signed in as
-                </Text>
-                <Text b color="inherit" css={{d: "flex"}}>
-                  {user?.email}
+                  Signed in as {user?.name}
                 </Text>
               </Dropdown.Item>
               <Dropdown.Item key="logout" withDivider color="error">
-                <Button css={{width: '100%'}} light color="error" onPress={() => handleLogOut()}>
+                <Button css={{width: "100%"}} light color="error" onPress={() => handleLogOut()}>
                   Log Out
                 </Button>
               </Dropdown.Item>
