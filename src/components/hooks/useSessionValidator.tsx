@@ -21,5 +21,6 @@ export default function useSessionValidator() {
           }
         });
     }
+    //eslint-disable-next-line
   }, [router, user]);
 }

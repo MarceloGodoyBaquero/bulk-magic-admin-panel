@@ -5,47 +5,75 @@ import {
   Table,
   Text,
   Spacer,
-  Checkbox,
-  Grid,
   Input,
-  Row,
   Button,
   Pagination,
-  Loading
+  Loading,
+  Card,
+  Badge,
+  Modal
 } from "@nextui-org/react";
 import {useRouter} from "next/router";
-import {GetServerSideProps} from "next";
-import useSWR, {SWRConfig} from "swr";
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const page = context.query.page || 1;
-  const res = await fetch(`http://localhost:3000/api/admin/listBuyers?page=${page}&limit=10`);
-  const data = await res.json();
-  return {
-    props: {
-      fallback: {
-        "http://localhost:3000/api/admin/listMerchants?page=1&limit10": data
-      }
-    }
-  };
-};
+import useSWR from "swr";
+import {useState, useEffect} from "react";
+import {deleteUser} from "@/utils/accessServices";
+import {toast} from "react-hot-toast";
 
 interface data {
   userId: number;
-  id: number;
+  active: boolean;
+  deletion: boolean;
+  _id: number;
   email: string;
   username: string;
   phone: string;
   total: number;
 }
 
-function DataTable({page}: { page: string | string[] | number | number[] | undefined }) {
-  const router = useRouter();
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const {
-    data,
-    isLoading
-  } = useSWR(`http://localhost:3000/api/admin/listBuyers?page=${page}&limit=10`, fetcher, {refreshInterval: 20000});
-  console.log(data)
+function DataTable({data, isLoading}: { data: any, isLoading: any }) {
+  const [visible, setVisible] = useState(false);
+
+  const [user, setUser] = useState<any>({
+    userId: 0,
+    name: "",
+  });
+
+  const [nameConfirmation, setNameConfirmation] = useState("");
+
+  const closeHandler = () => {
+    setVisible(false);
+  };
+
+  const handler = (id: string | number, name: string) => {
+    setUser({
+      userId: id,
+      name: name
+    });
+    setVisible(true);
+  };
+
+  const handleFormSubmit = () => {
+    if (nameConfirmation === user.name) {
+      deleteUser(user.userId)
+        .then((res) => {
+          console.log(res)
+          toast.success("User deleted successfully");
+          setVisible(false);
+        })
+        .catch((e) => {
+          console.log(e)
+          toast.error(e.response.data.message);
+          setVisible(false);
+        });
+    } else {
+      toast.error("Name confirmation is not correct");
+    }
+  };
+
+  const handleFormChange = (e: any) => {
+    setNameConfirmation(e.target.value);
+  };
+
   if (isLoading) {
     return (
       <Container xl display="flex" alignItems="center" justify="center">
@@ -58,61 +86,168 @@ function DataTable({page}: { page: string | string[] | number | number[] | undef
   }
   return (
     <>
-      <Table
-        lined
-        color="primary"
-        aria-label="Example pagination table"
-        css={{
-          height: "auto",
-          minWidth: "100%",
-        }}
-      >
-        <Table.Header>
-          <Table.Column align="center">Country Code</Table.Column>
-          <Table.Column align="center">Phone Number</Table.Column>
-          <Table.Column align="center">Email Address</Table.Column>
-          <Table.Column align="center">Store Name</Table.Column>
-          <Table.Column align="center">Transaction Totals (Local Currency)</Table.Column>
-        </Table.Header>
-        <Table.Body>
-          {
-            data.agregation.map((item: data) => (
-              <Table.Row key={item.id}>
-                <Table.Cell>{item.phone ? item.phone.split("-")[0] : "-"}</Table.Cell>
-                <Table.Cell>{item.phone ? item.phone.split("-")[1] : "-"}</Table.Cell>
-                <Table.Cell>{item.email ? item.email : "-"}</Table.Cell>
-                <Table.Cell>{item.username}</Table.Cell>
-                <Table.Cell>${item.total}</Table.Cell>
-              </Table.Row>
-            ))
-          }
-        </Table.Body>
-      </Table>
-      <Spacer y={1}/>
-      <Container display="flex" justify="center" alignItems="center">
-        <Pagination
-          total={data.totalPages}
-          page={Number(page)}
-          initialPage={1}
-          onChange={(page) => router.push(`/admin/merchants?page=${page}`)}
-        />
-      </Container>
-      <Spacer y={1}/>
-      <Container sm display="flex" alignItems="flex-end" justify="flex-end">
-        <Text h3>
-          Total Sum of Transactions: ${data.totalSum}
-        </Text>
-      </Container>
+      <div className={"desktop-view"}>
+        <Table
+          lined
+          color="primary"
+          aria-label="Example pagination table"
+          css={{
+            height: "auto",
+            minWidth: "100%",
+          }}
+        >
+          <Table.Header>
+            <Table.Column align="center">Country Code</Table.Column>
+            <Table.Column align="center">Phone Number</Table.Column>
+            <Table.Column align="center">Email Address</Table.Column>
+            <Table.Column align="center">Store Name</Table.Column>
+            <Table.Column align="center">Status</Table.Column>
+            <Table.Column align="center">Transaction Totals</Table.Column>
+          </Table.Header>
+          <Table.Body>
+            {
+              data.agregation.map((item: data) => (
+                <Table.Row key={item._id}>
+                  <Table.Cell>{item.phone ? item.phone.split("-")[0] : "-"}</Table.Cell>
+                  <Table.Cell>{item.phone ? item.phone.split("-")[1] : "-"}</Table.Cell>
+                  <Table.Cell>{item.email ? item.email : "-"}</Table.Cell>
+                  <Table.Cell>{item.username}</Table.Cell>
+                  <Table.Cell>
+                    <Badge css={{cursor: 'pointer'}} onClick={() => handler(item._id, item.username)} color={item.deletion ? "error" : item.active ? "primary" : "warning"}>
+                      {item.deletion ? "del" : item.active ? "act" : "ina"}
+                    </Badge>
+                  </Table.Cell>
+                  <Table.Cell>${item.total}</Table.Cell>
+                </Table.Row>
+              ))
+            }
+          </Table.Body>
+        </Table>
+      </div>
+      <div className={"mobile-view"}>
+        {
+          data?.agregation?.map((item: data) => (
+            <>
+              <Card key={item._id}>
+                <Card.Header>
+                  <div style={{width: "100%", display: "flex", justifyContent: "space-between"}}>
+                    <Text h4>
+                      Buyer Account
+                    </Text>
+                    <div>
+                      <Badge color={item.active ? "primary" : "warning"}>
+                        {item.active ? "Active acount" : "Inactive acount"}
+                      </Badge>
+                      {item.deletion ? <Badge color={"error"}>
+                        Marked for deletion
+                      </Badge> : null}
+                    </div>
+                  </div>
+                </Card.Header>
+                <Card.Divider />
+                <Card.Body>
+                  <Text h5>
+                    Country Code: {item.phone ? item.phone.split("-")[0] : "-"}
+                  </Text>
+                  <Text h5>
+                    Phone Number: {item.phone ? item.phone.split("-")[1] : "-"}
+                  </Text>
+                  <Text h5>
+                    Email Address: {item.email ? item.email : "-"}
+                  </Text>
+                  <Text h5>
+                    Store Name: {item.username}
+                  </Text>
+                  <Text h5>
+                    Transaction Totals (Local Currency): ${item.total}
+                  </Text>
+                </Card.Body>
+                <Card.Divider />
+                <Card.Footer>
+                  <Button onPress={() => handler(item._id, item.username)} color="error">
+                    Delete
+                  </Button>
+                </Card.Footer>
+              </Card>
+              <Spacer y={1}/>
+            </>
+          ))
+        }
+      </div>
+      <Modal
+        closeButton
+        blur
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}>
+        <Modal.Header>
+          <Text h3>You want to delete {user.name} ?</Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Text>If you are shure, type {user.name} and press delete</Text>
+          <Input
+            bordered
+            name={"username"}
+            onChange={(e) => handleFormChange(e)}
+            fullWidth
+            clearable
+            label={"Name"}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto flat color="error" onPress={closeHandler}>
+            Close
+          </Button>
+          <Button auto onPress={handleFormSubmit}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
 
 
-export default function Buyers({fallback}: { fallback: any }) {
+export default function Buyers() {
   const router = useRouter();
   const page = router.query.page || 1;
+  const term = router.query.searchTerm || "";
+  const sortTerm = router.query.sort || "";
+
+  const [searchTerm, setSearchTerm] = useState<any>("");
+  const [sort, setSort] = useState<any>("");
+
+  useEffect(() => {
+    setSort(sortTerm);
+    setSearchTerm(term);
+  }, [sortTerm, term]);
+
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const {
+    data,
+    isLoading
+  } = useSWR(`http://localhost:3000/api/admin/listbuyers?page=${page}&limit=10&searchTerm=${term}&sort=${sortTerm}`, fetcher, {refreshInterval: 20000});
+
+  const handleSearchInput = (e: any) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    router.push(`/admin/buyers?page=1&searchTerm=${searchTerm ? searchTerm : ""}&sort=${sort}`);
+  };
+
+  const handleSort = () => {
+    if (sort.length === 0) {
+      setSort("earned");
+      router.push(`/admin/buyers?page=1&searchTerm=${searchTerm ? searchTerm : ""}&sort=earned`);
+    } else {
+      setSort("");
+      router.push(`/admin/buyers?page=1&searchTerm=${searchTerm ? searchTerm : ""}&sort=`);
+    }
+  };
+
+
   return (
-    <SWRConfig value={{fallback}}>
+    <>
       <Head>
         <title>BulkMagic Buyers Dashboard</title>
         <meta name="description" content="Generated by create next app"/>
@@ -123,61 +258,41 @@ export default function Buyers({fallback}: { fallback: any }) {
       <Container sm>
         <Spacer y={1}/>
         <Text h1>Buyers Management</Text>
-        <Text h2>Filters:</Text>
         <Spacer y={1}/>
-        <Grid.Container gap={1} justify="center" alignItems="center">
-          <Grid>
-            <Container>
-              <Row>
-                <Checkbox.Group orientation="horizontal">
-                  <Checkbox value="">
-                    Country Code
-                  </Checkbox>
-                </Checkbox.Group>
-                <Input size="sm" width="60px"/>
-              </Row>
-              <Text h5>
-                (no need to include &#34;+&#34;)
-              </Text>
-            </Container>
-          </Grid>
-          <Grid>
-            <Container>
-              <Row>
-                <Checkbox.Group orientation="horizontal">
-                  <Checkbox value="">
-                    Recent Signups
-                  </Checkbox>
-                </Checkbox.Group>
-              </Row>
-              <Text h5>
-                (default is chronological)
-              </Text>
-            </Container>
-          </Grid>
-          <Grid>
-            <Container>
-              <Row>
-                <Checkbox.Group orientation="horizontal">
-                  <Checkbox value="">
-                    Largest Transactions
-                  </Checkbox>
-                </Checkbox.Group>
-              </Row>
-              <Text h5>
-                (try it to pair with &#34;Country Code&#34;)
-              </Text>
-            </Container>
-          </Grid>
-          <Grid>
-            <Button>
-              Search
-            </Button>
-          </Grid>
-        </Grid.Container>
+        <Container display="flex" direction="row" justify="flex-start" alignItems="center">
+          <Input labelPlaceholder="Search" value={searchTerm} bordered color="primary"
+                 onChange={(e) => handleSearchInput(e)}
+                 name="searchTerm"/>
+          <Spacer x={1}/>
+          <Button auto onPress={() => handleSubmit()}>
+            Search
+          </Button>
+        </Container>
         <Spacer y={1}/>
-        <DataTable page={page}/>
+        <Container display="flex" direction="column" justify="center" alignItems="flex-end">
+          <Button auto bordered={!sort.length} color={sort.length ? "success" : "primary"}
+                  onPress={() => handleSort()}>
+            Order by: Largest Transactions
+          </Button>
+        </Container>
+        <Spacer y={1}/>
+        <DataTable data={data} isLoading={isLoading}/>
+        <Spacer y={1}/>
+        {!isLoading ? <><Container display="flex" justify="center" alignItems="center">
+          <Pagination
+            total={data?.totalPages}
+            page={Number(page)}
+            initialPage={1}
+            onChange={(page) => router.push(`/admin/buyers?page=${page}&searchTerm=${term}&sort=${sortTerm}`)}
+          />
+        </Container>
+          <Spacer y={1}/>
+          <Container sm display="flex" alignItems="flex-end" justify="flex-end">
+            <Text h3>
+              Total Sum of Transactions: ${data?.totalSum}
+            </Text>
+          </Container></> : null}
       </Container>
-    </SWRConfig>
-  )
+    </>
+  );
 }

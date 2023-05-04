@@ -19,3 +19,7 @@ export const checkSession = async (token) => {
     }
   })
 }
+
+export const deleteUser = async (id) => {
+  return await api.delete(`/admin/deactivate/${id}`)
+}
