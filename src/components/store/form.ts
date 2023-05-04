@@ -14,7 +14,7 @@ export const useFormStore1 = create()((set) => ({
       back: "Back",
       logOut: "Log Out",
     },
-    setCommon: (name: string, value: string) => set((state) => ({common: {...state.common, [name]: value}})),
+    setCommon: (name: string, value: string) => set((state: any) => ({common: {...state.common, [name]: value}})),
   })
 );
 
@@ -43,7 +43,7 @@ export const useFormStore2 = create()((set) => ({
       textReturnDashboardMerchant: "Return to dashboard",
       textReturnDashboardBuyer: "Return to dashboard",
     },
-    setHomeScreen: (name: string, value: string) => set((state) => ({
+    setHomeScreen: (name: string, value: string) => set((state: any) => ({
       homeScreen: {
         ...state.homeScreen,
         [name]: value
@@ -59,7 +59,7 @@ export const useFormStore3 = create()((set) => ({
     languageMenuScreenRef: {
       headerText: "Language",
     },
-    setLanguageMenuScreen: (name: string, value: string) => set((state) => ({
+    setLanguageMenuScreen: (name: string, value: string) => set((state : any) => ({
       languageMenuScreen: {
         ...state.languageMenuScreen,
         [name]: value
