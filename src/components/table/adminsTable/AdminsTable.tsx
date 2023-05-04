@@ -7,7 +7,7 @@ export default function AdminsTable() {
   const {
     data,
     isLoading
-  } = useSWR(`http://localhost:3000/api/admin/list`, fetcher, {refreshInterval: 20000});
+  } = useSWR(`${process.env.NEXT_PUBLIC_URL_SERVER}/admin/list`, fetcher, {refreshInterval: 20000});
 
   if (isLoading) {
     return (

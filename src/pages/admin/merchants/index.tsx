@@ -235,7 +235,7 @@ export default function Merchants() {
   const {
     data,
     isLoading
-  } = useSWR(`http://localhost:3000/api/admin/listMerchants?page=${page}&limit=10&searchTerm=${term}&sort=${sortTerm}`, fetcher, {refreshInterval: 20000});
+  } = useSWR(`${process.env.NEXT_PUBLIC_URL_SERVER}/admin/listMerchants?page=${page}&limit=10&searchTerm=${term}&sort=${sortTerm}`, fetcher, {refreshInterval: 20000});
 
   const handleSearchInput = (e: any) => {
     setSearchTerm(e.target.value);
