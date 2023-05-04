@@ -5,7 +5,6 @@ import Image from "next/image";
 import {useSessionStore} from "@/components/store/session";
 import {useRouter} from "next/router";
 import useSessionValidator from "@/components/hooks/useSessionValidator";
-import useSWR from "swr";
 
 export default function NavBar({location}: { location: string }) {
   const {user, logOut} = useSessionStore();

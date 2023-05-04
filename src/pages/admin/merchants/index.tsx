@@ -147,7 +147,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
                     </Text>
                     <div>
                       <Badge color={item.active ? "primary" : "warning"}>
-                        {item.active ? "Active acount" : "Inactive acount"}
+                        {item.active ? "Active account" : "Inactive account"}
                       </Badge>
                       {item.deletion ? <Badge color={"error"}>
                         Marked for deletion
@@ -195,7 +195,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
           <Text h3>You want to delete {user.name} ?</Text>
         </Modal.Header>
         <Modal.Body>
-          <Text>If you are shure, type {user.name} and press delete</Text>
+          <Text>If you are sure, type {user.name} and press delete</Text>
           <Input
             bordered
             name={"username"}

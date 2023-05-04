@@ -17,7 +17,7 @@ export default function CreateAdminModal() {
   const handleFormSubmit = () => {
     setLoading(true);
     createAdmin(form)
-      .then((res) => {
+      .then(() => {
         setVisible(false);
         toast.success("Admin Created Successfully");
         setLoading(false);
