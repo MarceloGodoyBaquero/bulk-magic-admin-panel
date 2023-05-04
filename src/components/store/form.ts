@@ -1,7 +1,49 @@
 import {create} from "zustand";
 
+interface common {
+  common: {
+    ok: string,
+    cancel: string,
+    back: string,
+    logOut: string,
+  },
+  commonRef: {
+    ok: string,
+    cancel: string,
+    back: string,
+    logOut: string,
+  },
+  setCommon: (name: string, value: string) => void
+}
 
-export const useFormStore1 = create()((set) => ({
+interface homeScreen {
+  homeScreen: {
+    header: string,
+    bottonLeft: string,
+    buttonRight: string,
+    textSearchID: string,
+    textSearchName: string,
+    textButtonFind: string,
+    textRegisterMerchant: string,
+    textRegisterBuyer: string,
+    textReturnDashboardMerchant: string,
+    textReturnDashboardBuyer: string,
+  },
+homeScreenRef: {
+  header: string,
+  bottonLeft: string,
+  buttonRight: string,
+  textSearchID: string,
+  textSearchName: string,
+  textButtonFind: string,
+  textRegisterMerchant: string,
+  textRegisterBuyer: string,
+  textReturnDashboardMerchant: string,
+  textReturnDashboardBuyer: string,
+  },
+  setHomeScreen: (name: string, value: string) => void
+}
+export const useFormStore1 = create<common>()((set) => ({
     common: {
       ok: "OK!",
       cancel: "Cancel",
@@ -18,7 +60,7 @@ export const useFormStore1 = create()((set) => ({
   })
 );
 
-export const useFormStore2 = create()((set) => ({
+export const useFormStore2 = create<homeScreen>()((set) => ({
     homeScreen: {
       header: "The World Leader in Prepaid Bulk Payments",
       bottonLeft: "Store Id number",
