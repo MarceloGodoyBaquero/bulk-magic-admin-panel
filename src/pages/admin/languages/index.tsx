@@ -1,14 +1,12 @@
 import Head from "next/head"
 import NavBar from "@/components/navbar/Navbar"
 import {Container, Text, Textarea, Button, Spacer} from "@nextui-org/react"
-import en from "./en"
-import {useEffect, useState} from "react";
 import {useFormStore1, useFormStore2} from "@/components/store/form";
 
 
 export default function Languages() {
   const {common, setCommon, commonRef} = useFormStore1()
-  const {homeScreen, homeScreenRef, setHomeScreen} = useFormStore2()
+  const {homeScreenRef, setHomeScreen} = useFormStore2()
   return (
     <>
       <Head>
@@ -31,7 +29,6 @@ export default function Languages() {
                   onChange={(e) => setCommon(key, e.target.value)}
                   placeholder={value}
                   width="100%"
-                  height="100px"
                 />
                 <Spacer y={1}/>
               </Container>
@@ -49,7 +46,6 @@ export default function Languages() {
                   onChange={(e) => setHomeScreen(key, e.target.value)}
                   placeholder={value}
                   width="100%"
-                  height="100px"
                 />
                 <Spacer y={1}/>
               </Container>
@@ -58,7 +54,7 @@ export default function Languages() {
         }
         <Text h3 color={"primary"}>Home Screen</Text>
         <Spacer y={1}/>
-        <Button onPress={(e) => console.log(common)}>
+        <Button onPress={() => console.log(common)}>
           Save
         </Button>
       </Container>
