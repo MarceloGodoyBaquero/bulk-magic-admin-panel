@@ -18,7 +18,7 @@ export default function NavBar({location}: { location: string }) {
 
   return (
     <>
-      <Navbar isBordered variant={"sticky"}>
+      <Navbar disableBlur isBordered variant={"sticky"}>
         <Navbar.Toggle showIn="xs"/>
         <Navbar.Brand>
           <Image src={BulkMagicLogo} width={40} height={40} alt={"BulkMagic Logo"}/>
@@ -28,7 +28,7 @@ export default function NavBar({location}: { location: string }) {
           <Navbar.Link isActive={location === "admin"} href="/admin">Admin</Navbar.Link>
           <Navbar.Link isActive={location === "merchants"} href="/admin/merchants?page=1">Merchants</Navbar.Link>
           <Navbar.Link isActive={location === "buyers"} href="/admin/buyers?page=1">Buyers</Navbar.Link>
-          <Navbar.Link isActive={location === "languages"} href="/admin/languages">Languages</Navbar.Link>
+          <Navbar.Link isActive={location === "languages"} href="/admin/languages/en">Languages</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
           <Dropdown placement="bottom-right">
@@ -108,7 +108,7 @@ export default function NavBar({location}: { location: string }) {
               css={{
                 minWidth: "100%",
               }}
-              href="/admin/languages">
+              href="/admin/languages/en">
               Languages
             </Link>
           </Navbar.CollapseItem>

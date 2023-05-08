@@ -1,0 +1,311 @@
+ {
+  "common": {
+    "ok": "OK!",
+    "cancel": "Cancel",
+    "back": "Back",
+    "logOut": "Log Out"
+  },
+  "homeScreen": {
+    "header": "The World Leader in Prepaid Bulk Payments",
+    "bottonLeft": "Store Id number",
+    "buttonRight": "Store Name",
+    "textSearchID": "Ask the merchant for their BulkMagic store ID number",
+    "textSearchName": "Enter the store name",
+    "textButtonFind": "Find Bulk Deals",
+    "textRegisterMerchant": "Register as a Merchant",
+    "textRegisterBuyer": "Register as a Buyer",
+    "textReturnDashboardMerchant": "Return to dashboard",
+    "textReturnDashboardBuyer": "Return to dashboard"
+  },
+  "languageMenuScreen": {
+    "headerText": "Language"
+  },
+  "loginMerchantScreen": {
+    "signIn": "Merchant log in",
+    "enterDetails": "Log in to buy and redeem bulk vouchers with BulkMagic.",
+    "bottonLeft": "Phone",
+    "buttonRight": "Email",
+    "textStore": "Store Name:",
+    "placeHolderTextStore": "Merchants may ask your name to verify a purchase.",
+    "requiredMessageStore": "This item is required",
+    "textPassword": "password",
+    "placeHolderTextPhone": "Phone Number",
+    "placeHolderTextEmail": "Enter Email",
+    "placeHolderTextPassword": "(8 characters minimum)",
+    "textButtonLogIn": "Log In",
+    "signUpText": "Sign up here",
+    "notRegistered": "Not Registered?",
+    "forgotText": "Forgot your password?",
+    "buyerTextHelper": "Buyer?"
+  },
+  "signUpMerchantScreen": {
+    "signUp": "Merchant Sign up",
+    "enterDetails": "Begin the store registration process for selling bulk vouchers with BulkMagic.",
+    "bottonLeft": "Phone",
+    "buttonRight": "Email",
+    "textStore": "Store Name:",
+    "placeHolderTextStore": "Create a name if you don't already have one.",
+    "requiredMessageStore": "This item is required",
+    "placeHolderTextPhone": "Phone Number",
+    "placeHolderTextEmail": "Enter Email",
+    "registered": "Already Registered?",
+    "textPassword": "password:",
+    "placeHolderTextPassword": "(8 characters minimum)",
+    "textButtonSignUp": "Sign Up",
+    "logInText": "Log in here"
+  },
+  "VerifyOtpScreen": {
+    "headerText": "Verify Code",
+    "buttonText": "Verify"
+  },
+  "editMerchantProfileScreen": {
+    "signUp": "Edit Store Details",
+    "bottonLeft": "Phone",
+    "buttonRight": "Email",
+    "textStore": "Change Store Name:",
+    "placeHolderTextStore": "Maria's Fresh Market Stall",
+    "requiredMessageStore": "This item is required",
+    "placeHolderTextPhone": "Enter new Phone Number",
+    "placeHolderTextEmail": "Enter new Email",
+    "textPassword": "new password:",
+    "textPasswordConfirm": "confirm new password:",
+    "placeHolderTextPassword": "(8 characters minimum)",
+    "textButtonSignUp": "Save Changes"
+  },
+  "loginBuyerScreen": {
+    "signIn": "Buyer log in",
+    "enterDetails": "Log in to buy and redeem bulk vouchers with BulkMagic.",
+    "bottonLeft": "Phone",
+    "buttonRight": "Email",
+    "textStore": "Store Name:",
+    "placeHolderTextStore": "Create a name if you don't already have one.",
+    "requiredMessageStore": "This item is required",
+    "placeHolderTextPhone": "Phone Number",
+    "placeHolderTextEmail": "Enter Email",
+    "textPassword": "password",
+    "placeHolderTextPassword": "(8 characters minimum)",
+    "textButtonLogIn": "Log In",
+    "signUpText": "Sign up here",
+    "notRegistered": "Not Registered?",
+    "forgotText": "Forgot your password?",
+    "merchantTextHelper": "Merchant?",
+    "merchantTextHelper2": "or",
+    "merchantTextHelper3": "Sign up"
+  },
+  "signUpBuyerScreen": {
+    "signUp": "Buyer Sign up",
+    "enterDetails": "With a few simple details, you'll be ready to access prepaid bulk deals at local merchants.",
+    "bottonLeft": "Phone",
+    "buttonRight": "Email",
+    "textStore": "Full Name:",
+    "placeHolderTextStore": "Names are only used to verify purchases.",
+    "requiredMessageStore": "This item is required",
+    "placeHolderTextPhone": "Phone Number",
+    "placeHolderTextEmail": "Enter Email",
+    "textPassword": "password:",
+    "registered": "Already Registered?",
+    "placeHolderTextPassword": "(8 characters minimum)",
+    "textButtonSignUp": "Sign Up",
+    "logInText": "Log in here"
+  },
+  "editBuyerProfileScreen": {
+    "signUp": "Edit Profile",
+    "bottonLeft": "Phone",
+    "buttonRight": "Email",
+    "textStore": "Change Your Name:",
+    "placeHolderTextStore": "John Smith",
+    "requiredMessageStore": "This item is required",
+    "placeHolderTextPhone": "Enter new Phone Number",
+    "placeHolderTextEmail": "Enter new Email",
+    "textPassword": "new password:",
+    "textPasswordConfirm": "confirm new password:",
+    "placeHolderTextPassword": "(8 characters minimum)",
+    "textButtonSignUp": "Save Changes"
+  },
+  "resultSearchScreen": {
+    "header": "Search Results:"
+  },
+  "ModalMenuComponent": {
+    "menuOneText": "Home (Search)",
+    "menuTwoText": "My Dashboard",
+    "menuThreeText": "Items i'm Selling",
+    "menuFourText": "Verify Buyer Payments",
+    "menuFiveText": "Language",
+    "menuSixText": "Edit Profile",
+    "buttonText": "Log Out"
+  },
+  "ModalBuyerMenuComponent": {
+    "menuOneText": "Home (Search)",
+    "menuTwoText": "Buyer Dashboard",
+    "menuThreeText": "My Vouchers",
+    "menuFourText": "My Payments",
+    "menuFiveText": "Language",
+    "menuSixText": "Edit Profile",
+    "menuSevenText": "How it works",
+    "buttonText": "Log Out",
+    "buttonText2": "Log In"
+  },
+  "dashboardScreen": {
+    "headerText": "Merchant Dashboard",
+    "buttonText": "Verify Buyer Payments",
+    "scanButtonText": "Scan Redemption Code",
+    "listViewText": "List New Items",
+    "salesRedemptionText": "Sales & Redemption History",
+    "storeNumberText": "Store Number Assignment:",
+    "footerText": "Your store number and the QR code below can both be used by customers to easily find and identify your store."
+  },
+  "dashboardBuyerScreen": {
+    "headerText": "Buyer Dashboard",
+    "buttonText": "Payments in progress",
+    "scanButtonText": "Edit Profile",
+    "listViewText": "Buy More Items",
+    "salesRedemptionText": "Use my Vouchers",
+    "storeNumberText": "Store Number Assignment:",
+    "footerText": "This number can be used by customers to easily find and identify your store"
+  },
+  "createBulkVoucherScreen": {
+    "headerText": "Create a bulk voucher",
+    "labelNameProduct": "Item Name (and units):",
+    "placeHolderNameProduct": "E.g “Rice, 1 kg” or “Eggs, 1 dozen”",
+    "labelminNumberProduct": "Minimum items for bulk pricing:",
+    "placeHolderminNumberProduct": "E.g. “35”",
+    "labelPriceProduct": "Bulk price per item:",
+    "placeHolderPriceProduct": "E.g. “1.17”",
+    "currencyText": "(all prices are in your local currency)",
+    "priceText": "(buyers must purchase at least this many items)",
+    "textButton": "Publish Bulk deal"
+  },
+  "vendorsPageScreen": {
+    "textStore": "Store #:",
+    "headerTableItemOne": "Item & Price",
+    "headerTableItemTwo": "Quantity",
+    "headerTableItemThree": "Add to Cart",
+    "placeholderMin": "Minimum Items: ",
+    "priceText": "Price:",
+    "bottonText": "Complete Purchase"
+  },
+  "itemsSellingScreen": {
+    "textStore": "Store #:",
+    "headerTableItemOne": "Item",
+    "headerTableItemTwo": "Price",
+    "headerTableItemThree": "Minimum Purchase",
+    "footerText": "To remove a sale item, set “Minimum purchase” or “Price” to zero (0). Prior purchases remain redeemable.",
+    "bottonText": "Update Items I'm selling"
+  },
+  "paymentsConfirmScreen": {
+    "headerText": "Payments to Confirm",
+    "detailsText": "Important: Please click “Confirm” only when the buyer has paid in full and has confirmed that their name matches the buyer name shown below. Confirming the purchase will provide the buyer with digital vouchers, enabling them to take home their bulk purchase gradually.",
+    "headerTableItemOne": "Sale Item",
+    "headerTableItemTwo": "Buyer Name",
+    "headerTableItemThree": "Purchase Amount",
+    "headerTableItemFour": "Total Cost",
+    "headerTableItemFive": "Payment Received",
+    "confirmText": "Confirm",
+    "confirmedText": "Payment Confirmed"
+  },
+  "paymentsConfirmBuyerScreen": {
+    "headerText": "Payment Confirmation",
+    "detailsText": "Important: Please pay the merchant in person and ask that they confirm your purchase before you leave the store.",
+    "detailsText4": "to verify that your order has been confirmed. Once confirmed, your bulk order will be shown in ",
+    "detailsText5": " Refresh this page ",
+    "detailsText2": "“My Vouchers”",
+    "detailsText3": " and you will be able to gradually redeem these items as needed.",
+    "headerTableItemOne": "Sale Item",
+    "headerTableItemTwo": "Seller Name",
+    "headerTableItemThree": "Purchase Amount",
+    "headerTableItemFour": "Total Cost",
+    "headerTableItemFive": "Payment Received",
+    "confirmText": "Confirm",
+    "confirmedText": "Payment Confirmed",
+    "notConfirmedText": "Not Confirmed"
+  },
+  "salesRedemptionHistoryScreen": {
+    "headerText": "Voucher Sales & Redemption History",
+    "headerTableItemOne": "Sale Item",
+    "headerTableItemTwo": "Purchase Date",
+    "headerTableItemThree": "Quantity",
+    "headerTableItemFour": "Total",
+    "headerTableItemOneRedemption": "Item",
+    "headerTableItemTwoRedemption": "Customer",
+    "headerTableItemThreeRedemption": "Vouchers Redeemed",
+    "headerTableItemFourRedemption": "Vouchers Remaining",
+    "bottonLeft": "Sales",
+    "buttonRight": "Redemption"
+  },
+  "myVouchersScreen": {
+    "headerText": "My Vouchers",
+    "headerTableItemOne": "Voucher \n Item",
+    "headerTableItemTwo": "Redeem \n Vouchers",
+    "headerTableItmeTwoUsed": "Vouchers Used",
+    "headerTableItemThree": "Vouchers \n Remaining",
+    "bottonLeft": "Voucher Wallet",
+    "buttonRight": "Vouchers Used",
+    "rendemText": "Redeem"
+  },
+  "scanRedemptionScreen": {
+    "headerText": "Scan redemption Code",
+    "detailsText": "If the QR code is valid, it will be authenticated when you scan it.",
+    "buttonText": "Tap to Scan Again"
+  },
+  "scanMerchantQrScreen": {
+    "headerText": "Scan Store Code",
+    "detailsText": "If the QR code is valid, you will be taken to the merchant's BulkMagic store page.",
+    "buttonText": "Tap to Scan Again"
+  },
+  "redemptionCodeScreen": {
+    "headerText": "Redemption Code",
+    "detailsText": "Please show this code to the merchant at ",
+    "detailsText2": ". Once scanned by the merchant, it is exchangeable for:",
+    "footertext": "If you don't want  to redeem this item, or it's not in stock with the merchant, you may abandon this code and generate a new one once you are ready."
+  },
+  "voucherRedemptionScreen": {
+    "headerText": "Voucher Redemption",
+    "labelText": "Number of Vouchers you wish to use",
+    "placeHolderText": "Enter any number",
+    "helperText": "Decimals (e.g. 1.52) should only be used when the voucher item is divisible. Allow the merchant to measure your items first if the voucher unit is a weight or volume.",
+    "buttonText": "Submit"
+  },
+  "voucherValidScreen": {
+    "headerText": "Voucher is valid",
+    "voucherText": "vouchers for",
+    "voucherText2": "have successfully been deducted from the customer's mobile wallet.",
+    "detailsText": "Please provide the allotted amount of items to the customer at this time."
+  },
+  "voucherInvalidScreen": {
+    "headerText": "Voucher invalid",
+    "detailsText": "This voucher code may have already been used or is otherwise inactive and not recognized by our systems.",
+    "detailsText2": "Another voucher code can be created by navigating to the “My Vouchers” page and clicking “Redeem” next to any item you wish to retrieve."
+  },
+  "forgotPasswordScreen": {
+    "headerText": "Forgot Password",
+    "textOr": "OR",
+    "buttonText": "Send"
+  },
+  "resetPasswordScreen": {
+    "headerText": "Reset Password",
+    "subHeaderText": "Check your email!",
+    "subHeaderText2": "Check your messages!",
+    "detailsText": "We just emailed you a link to reset your password.",
+    "detailsText2": "We just texted you a link to reset your password."
+  },
+  "HowItWorksBuyerScreen": {
+    "headerText": "How To use bulkmagic",
+    "textOne": "Buy large amounts of an item to unlock bulk discounts. Receive digital vouchers instead of taking it home all at once.",
+    "textTwo": "Return to the store and redeem your vouchers gradually, only taking home items as needed.",
+    "textThree": "Continue to save money without worrying about spoilage or storage!",
+    "textFooter": "Questions & Comments:",
+    "textSubFooter": "ask@bulkmagic.co",
+    "buttonDeletion": "Account Deletion",
+    "buttonDeleted": "Cancel Deletion"
+  },
+  "HowItWorksMerchantScreen": {
+    "headerText": "How To use bulkmagic",
+    "textOne": "Pre-sell items in bulk to earn up-front revenue. Customers receive digital vouchers to bring items home gradually.",
+    "textTwo": "Customers will return to redeem their vouchers gradually, likely making additional purchases on each visit.",
+    "textThree": "Continue to increase prepaid revenue and customer loyalty with BulkMagic!",
+    "textFooter": "Questions & Comments:",
+    "textSubFooter": "ask@bulkmagic.co",
+    "buttonDeletion": "Account Deletion",
+    "buttonDeleted": "Cancel Deletion"
+  }
+}

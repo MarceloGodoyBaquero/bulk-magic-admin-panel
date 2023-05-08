@@ -42,6 +42,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
   const [user, setUser] = useState<any>({
     userId: 0,
     name: "",
+    status: false,
   });
 
   const [nameConfirmation, setNameConfirmation] = useState("");
@@ -50,10 +51,11 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
     setVisible(false);
   };
 
-  const handler = (id: string | number, name: string) => {
+  const handler = (id: string | number, name: string, status : boolean) => {
     setUser({
       userId: id,
-      name: name
+      name: name,
+      status: status,
     });
     setVisible(true);
   };
@@ -123,7 +125,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
                   <Table.Cell>{item.email ? item.email : "-"}</Table.Cell>
                   <Table.Cell>{item.username}</Table.Cell>
                   <Table.Cell>
-                    <Badge css={{cursor: "pointer"}} onClick={() => handler(item._id, item.username)}
+                    <Badge css={{cursor: "pointer"}} onClick={() => handler(item._id, item.username, item.active)}
                            color={item.deletion ? "error" : item.active ? "primary" : "warning"}>
                       {item.deletion ? "del" : item.active ? "act" : "ina"}
                     </Badge>
@@ -175,8 +177,8 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
                 </Card.Body>
                 <Card.Divider/>
                 <Card.Footer>
-                  <Button onPress={() => handler(item._id, item.username)} color="error">
-                    Delete
+                  <Button onPress={() => handler(item._id, item.username, item.active)} color={item.active ? "error" : "success"}>
+                    {item.active ? "Deactivate" : "Activate"}
                   </Button>
                 </Card.Footer>
               </Card>
@@ -192,10 +194,10 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
         open={visible}
         onClose={closeHandler}>
         <Modal.Header>
-          <Text h3>You want to delete {user.name} ?</Text>
+          <Text h3>You want to {user.status ? 'deactivate' : 'activate'} {user.name} ?</Text>
         </Modal.Header>
         <Modal.Body>
-          <Text>If you are sure, type {user.name} and press delete</Text>
+          <Text>If you are sure, type {user.name} and press {user.status ? 'deactivate' : 'activate'}</Text>
           <Input
             bordered
             name={"username"}
@@ -209,7 +211,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
             Close
           </Button>
           <Button auto onPress={handleFormSubmit}>
-            Delete
+            {user.status ? 'Deactivate' : 'Activate'}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -242,7 +244,7 @@ export default function Merchants() {
   };
 
   const handleSubmit = () => {
-    router.push(`/admin/merchants?page=1&searchTerm=${searchTerm ? searchTerm : ""}&sort=${sort}`);
+    router.push(`/admin/merchants?page=1&searchTerm=${searchTerm ? encodeURIComponent(searchTerm) : ""}&sort=${sort}`);
   };
 
   const handleSort = () => {

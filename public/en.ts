@@ -3,7 +3,7 @@ const en = {
     ok: "OK!",
     cancel: "Cancel",
     back: "Back",
-    logOut: "Log Out", // @demo remove-current-line
+    logOut: "Log Out"
   },
   homeScreen: {
     header: "The World Leader in Prepaid Bulk Payments",
@@ -95,7 +95,7 @@ const en = {
   signUpBuyerScreen: {
     signUp: "Buyer Sign up",
     enterDetails:
-    "With a few simple details, you'll be ready to access prepaid bulk deals at local merchants.",
+      "With a few simple details, you'll be ready to access prepaid bulk deals at local merchants.",
     bottonLeft: "Phone",
     buttonRight: "Email",
     textStore: "Full Name:",
@@ -154,7 +154,7 @@ const en = {
     salesRedemptionText: "Sales & Redemption History",
     storeNumberText: "Store Number Assignment:",
     footerText:
-    "Your store number and the QR code below can both be used by customers to easily find and identify your store.",
+      "Your store number and the QR code below can both be used by customers to easily find and identify your store.",
   },
   dashboardBuyerScreen: {
     headerText: "Buyer Dashboard",
@@ -192,13 +192,13 @@ const en = {
     headerTableItemTwo: "Price",
     headerTableItemThree: "Minimum Purchase",
     footerText:
-    "To remove a sale item, set “Minimum purchase” or “Price” to zero (0). Prior purchases remain redeemable.",
+      "To remove a sale item, set “Minimum purchase” or “Price” to zero (0). Prior purchases remain redeemable.",
     bottonText: "Update Items I'm selling",
   },
   paymentsConfirmScreen: {
     headerText: "Payments to Confirm",
     detailsText:
-    "Important: Please click “Confirm” only when the buyer has paid in full and has confirmed that their name matches the buyer name shown below. Confirming the purchase will provide the buyer with digital vouchers, enabling them to take home their bulk purchase gradually.",
+      "Important: Please click “Confirm” only when the buyer has paid in full and has confirmed that their name matches the buyer name shown below. Confirming the purchase will provide the buyer with digital vouchers, enabling them to take home their bulk purchase gradually.",
     headerTableItemOne: "Sale Item",
     headerTableItemTwo: "Buyer Name",
     headerTableItemThree: "Purchase Amount",
@@ -210,9 +210,9 @@ const en = {
   paymentsConfirmBuyerScreen: {
     headerText: "Payment Confirmation",
     detailsText:
-    "Important: Please pay the merchant in person and ask that they confirm your purchase before you leave the store.",
+      "Important: Please pay the merchant in person and ask that they confirm your purchase before you leave the store.",
     detailsText4:
-    "to verify that your order has been confirmed. Once confirmed, your bulk order will be shown in ",
+      "to verify that your order has been confirmed. Once confirmed, your bulk order will be shown in ",
     detailsText5: " Refresh this page ",
     detailsText2: "“My Vouchers”",
     detailsText3: " and you will be able to gradually redeem these items as needed.",
@@ -256,7 +256,7 @@ const en = {
   scanMerchantQrScreen: {
     headerText: "Scan Store Code",
     detailsText:
-    "If the QR code is valid, you will be taken to the merchant's BulkMagic store page.",
+      "If the QR code is valid, you will be taken to the merchant's BulkMagic store page.",
     buttonText: "Tap to Scan Again",
   },
   redemptionCodeScreen: {
@@ -264,14 +264,14 @@ const en = {
     detailsText: "Please show this code to the merchant at ",
     detailsText2: ". Once scanned by the merchant, it is exchangeable for:",
     footertext:
-    "If you don't want  to redeem this item, or it's not in stock with the merchant, you may abandon this code and generate a new one once you are ready.",
+      "If you don't want  to redeem this item, or it's not in stock with the merchant, you may abandon this code and generate a new one once you are ready.",
   },
   voucherRedemptionScreen: {
     headerText: "Voucher Redemption",
     labelText: "Number of Vouchers you wish to use",
     placeHolderText: "Enter any number",
     helperText:
-    "Decimals (e.g. 1.52) should only be used when the voucher item is divisible. Allow the merchant to measure your items first if the voucher unit is a weight or volume.",
+      "Decimals (e.g. 1.52) should only be used when the voucher item is divisible. Allow the merchant to measure your items first if the voucher unit is a weight or volume.",
     buttonText: "Submit",
   },
   voucherValidScreen: {
@@ -283,9 +283,9 @@ const en = {
   voucherInvalidScreen: {
     headerText: "Voucher invalid",
     detailsText:
-    "This voucher code may have already been used or is otherwise inactive and not recognized by our systems.",
+      "This voucher code may have already been used or is otherwise inactive and not recognized by our systems.",
     detailsText2:
-    "Another voucher code can be created by navigating to the “My Vouchers” page and clicking “Redeem” next to any item you wish to retrieve.",
+      "Another voucher code can be created by navigating to the “My Vouchers” page and clicking “Redeem” next to any item you wish to retrieve.",
   },
   forgotPasswordScreen: {
     headerText: "Forgot Password",
@@ -302,9 +302,9 @@ const en = {
   HowItWorksBuyerScreen: {
     headerText: "How To use bulkmagic",
     textOne:
-    "Buy large amounts of an item to unlock bulk discounts. Receive digital vouchers instead of taking it home all at once.",
+      "Buy large amounts of an item to unlock bulk discounts. Receive digital vouchers instead of taking it home all at once.",
     textTwo:
-    "Return to the store and redeem your vouchers gradually, only taking home items as needed.",
+      "Return to the store and redeem your vouchers gradually, only taking home items as needed.",
     textThree: "Continue to save money without worrying about spoilage or storage!",
     textFooter: "Questions & Comments:",
     textSubFooter: "ask@bulkmagic.co",
@@ -313,17 +313,14 @@ const en = {
   },
   HowItWorksMerchantScreen: {
     headerText: "How To use bulkmagic",
-    textOne:
-    "Pre-sell items in bulk to earn up-front revenue. Customers receive digital vouchers to bring items home gradually.",
-    textTwo:
-    "Customers will return to redeem their vouchers gradually, likely making additional purchases on each visit.",
+    textOne: "Pre-sell items in bulk to earn up-front revenue. Customers receive digital vouchers to bring items home gradually.",
+    textTwo: "Customers will return to redeem their vouchers gradually, likely making additional purchases on each visit.",
     textThree: "Continue to increase prepaid revenue and customer loyalty with BulkMagic!",
     textFooter: "Questions & Comments:",
     textSubFooter: "ask@bulkmagic.co",
     buttonDeletion: "Account Deletion",
     buttonDeleted: "Cancel Deletion",
-  }
-}
+  },
+};
 
 export default en
-export type Translations = typeof en

@@ -23,3 +23,12 @@ export const checkSession = async (token) => {
 export const deleteUser = async (id) => {
   return await api.delete(`/admin/deactivate/${id}`)
 }
+
+
+export const langSearch = async (code) => {
+  return await api.get(`/admin/lang/${code}`)
+}
+
+export const langUpdate = async (code, sections) => {
+  return await api.put(`/admin/lang/${code}`, sections)
+}
