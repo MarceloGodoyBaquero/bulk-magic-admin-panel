@@ -1,41 +1,53 @@
 import Head from "next/head";
 import NavBar from "@/components/navbar/Navbar";
-import {Container, Text, Textarea, Button, Spacer, Pagination} from "@nextui-org/react";
+import {Container, Text, Textarea, Button, Spacer, Pagination, Modal, Input, Link} from "@nextui-org/react";
 import {useFormik} from "formik";
-import {langSearch, langUpdate} from "@/utils/accessServices";
+import {langCreate, langList, langSearch, langUpdate} from "@/utils/accessServices";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
+import {toast} from "react-hot-toast";
 
 export default function Languages() {
-  const router = useRouter()
-  const [lang, setLang] = useState<string>("en")
-  const [page, setPage] = useState<number>(1)
-  const languages: any = ({
-    en: "English",
-    sq: "shqiptar",
-    ar: "العربية",
-    bn: "বাংলা",
-    ch: "中文",
-    nl: "Nederlandse",
-    fr: "Français",
-    de: "German",
-    gr: "ελληνική",
-    gu: "Avañe'ẽ",
-    hi: "हिंदुस्तानी",
-    it: "Italiano",
-    ko: "한국어",
-    ms: "Melayu",
-    fa: "پارسی",
-    pt: "Português",
-    ro: "Română",
-    ru: "русский",
-    sr: "Српско-хрватски",
-    es: "Español",
-    sw: "Kiswahili",
-    sv: "Swedish",
-    ta: "தமிழ்",
-    tr: "Türk",
+  const router = useRouter();
+
+  const [visible, setVisible] = useState(false);
+
+  const [form, setForm] = useState<any>({
+    name: "",
+    code: ""
   });
+
+  const [lang, setLang] = useState<string>("en");
+  const [langName, setLangName] = useState<string>("English");
+
+  const [page, setPage] = useState<number>(1);
+  // const languages: any = ({
+  //   en: "English-en",
+  //   // sq: "shqiptar",
+  //   // ar: "العربية",
+  //   // bn: "বাংলা",
+  //   // ch: "中文",
+  //   // nl: "Nederlandse",
+  //   // fr: "Français",
+  //   // de: "German",
+  //   // gr: "ελληνική",
+  //   // gu: "Avañe'ẽ",
+  //   // hi: "हिंदुस्तानी",
+  //   // it: "Italiano",
+  //   // ko: "한국어",
+  //   // ms: "Melayu",
+  //   // fa: "پارسی",
+  //   // pt: "Português",
+  //   // ro: "Română",
+  //   // ru: "русский",
+  //   // sr: "Српско-хрватски",
+  //   es: "Español-es"
+  //   // sw: "Kiswahili",
+  //   // sv: "Swedish",
+  //   // ta: "தமிழ்",
+  //   // tr: "Türk",
+  // });
+  const [languages, setLanguages] = useState<any>([]);
   const formik = useFormik({
     initialValues: {
       common: {},
@@ -72,29 +84,79 @@ export default function Languages() {
       HowItWorksMerchantScreen: {},
     },
     onSubmit: values => {
-      langUpdate(lang, values)
+      langUpdate(langName, lang, values)
         .then(r => {
-          console.log('entro submit', r);
+          console.log("entro submit", r);
         })
         .catch(e => console.log(e));
     }
   });
 
+  const closeHandler = () => {
+    setVisible(false);
+  };
+
+  const handleFormSubmit = () => {
+    if (!form.name || !form.code) {
+      toast.error("Please fill all the fields");
+      return;
+    }
+    langCreate(form)
+      .then(r => {
+        toast.success("Language created successfully");
+        console.log("entro submit", r);
+        router.reload();
+      })
+      .catch(e => {
+        console.log(e);
+        toast.error(e.response.data.message || "Error creating language");
+        setVisible(false);
+        setForm({
+          name: "",
+          code: ""
+        })
+      });
+
+  };
+
+  const handleFormChange = (e: any) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handler = (e: any) => {
+    e.preventDefault();
+    setVisible(true);
+  };
+
   const handleLanguageChange = (e: any) => {
     e.preventDefault();
-    router.push(`/admin/languages/${e.target.value}`)
+    let name = e.target.value.split("+")[0];
+    let code = e.target.value.split("+")[1];
+    router.push(`/admin/languages/${name}/${code}`)
   };
 
   useEffect(() => {
-    setLang(router.query.id as string)
-    langSearch(router.query.id as string)
+    if(!router.query.id) return;
+    if(!router.query.lang) return;
+
+    setLang(router.query.id as string);
+    setLangName(router.query.lang as string)
+
+    langList()
+      .then(r => setLanguages(r.data.langsArray))
+      .catch(e => console.log(e));
+
+    langSearch(router.query.lang as string, router.query.id as string)
       .then(r => {
-        console.log(`entro precarga de leng ${r.data.lang.code}`, r)
-        formik.setValues(r.data.lang.sections);
+        console.log(`entro precarga de leng ${r?.data?.lang.name}-${r?.data?.lang?.code}`, r);
+        formik.setValues(r?.data?.lang.sections);
       })
       .catch(e => console.log(e));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query.id]);
+  }, [router.query.name, router.query.id]);
 
   const handleDownload = () => {
     const element = document.createElement("a");
@@ -120,14 +182,15 @@ export default function Languages() {
           <h1>Languages</h1>
           <select onChange={(e) => handleLanguageChange(e)}>
             {
-              Object?.entries(languages)?.map(([key, value]) => {
+              languages?.map((lang: any) => {
                 return (
                   // @ts-ignore
-                  <option selected={lang === key} key={key} value={key}>{value}</option>
+                  <option selected={lang === langName} key={lang} value={`${lang.name}+${lang.code}`}>{lang.name}</option>
                 );
               })
             }
           </select>
+          <Button onPress={(e) => handler(e)} color="warning">Add New Language</Button>
           <form style={{width: "100%"}} onSubmit={formik.handleSubmit}>
             {page === 1 && <Text h4 color="primary">Common</Text>}
             {
@@ -820,6 +883,45 @@ export default function Languages() {
           </form>
         </Container>
       </Container>
+      <Modal
+        closeButton
+        blur
+        aria-labelledby="modal-title"
+        open={visible}
+        onClose={closeHandler}>
+        <Modal.Header>
+          <Text h3>You want to add a new language to the list?</Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Text>If you are sure, please complete the fields </Text>
+          <Input
+            bordered
+            name={"name"}
+            onChange={(e) => handleFormChange(e)}
+            fullWidth
+            clearable
+            label={"Name"}
+            placeholder={"English"}/>
+          <Input
+            bordered
+            name={"code"}
+            onChange={(e) => handleFormChange(e)}
+            fullWidth
+            clearable
+            label={"ISO 639-1 standard language code"}
+            placeholder={"en"}/>
+          <Link block isExternal href="https://www.andiamo.co.uk/resources/iso-language-codes/"> List of ISO 639-1
+            standard language codes </Link>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button auto flat color="error" onPress={closeHandler}>
+            Close
+          </Button>
+          <Button color="success" auto onPress={handleFormSubmit}>
+            Add language
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

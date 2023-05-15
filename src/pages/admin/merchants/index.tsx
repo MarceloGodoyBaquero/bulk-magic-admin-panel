@@ -250,10 +250,10 @@ export default function Merchants() {
   const handleSort = () => {
     if (sort.length === 0) {
       setSort("earned");
-      router.push(`/admin/merchants?page=1&searchTerm=${searchTerm ? searchTerm : ""}&sort=earned`);
+      router.push(`/admin/merchants?page=1&searchTerm=${searchTerm ? encodeURIComponent(searchTerm) : ""}&sort=earned`);
     } else {
       setSort("");
-      router.push(`/admin/merchants?page=1&searchTerm=${searchTerm ? searchTerm : ""}&sort=`);
+      router.push(`/admin/merchants?page=1&searchTerm=${searchTerm ? encodeURIComponent(searchTerm) : ""}&sort=`);
     }
   };
 
@@ -295,7 +295,7 @@ export default function Merchants() {
             total={data?.totalPages}
             page={Number(page)}
             initialPage={1}
-            onChange={(page) => router.push(`/admin/merchants?page=${page}&searchTerm=${term}&sort=${sortTerm}`)}
+            onChange={(page) => router.push(`/admin/merchants?page=${page}&searchTerm=${searchTerm ? encodeURIComponent(searchTerm) : ""}&sort=${sortTerm}`)}
           />
         </Container>
           <Spacer y={1}/>
