@@ -126,8 +126,8 @@ export default function Languages() {
     });
   };
 
-  const handler = (e: any) => {
-    e.preventDefault();
+  const handler = () => {
+    // e.preventDefault();
     setVisible(true);
   };
 
@@ -190,7 +190,7 @@ export default function Languages() {
               })
             }
           </select>
-          <Button onPress={(e) => handler(e)} color="warning">Add New Language</Button>
+          <Button onPress={() => handler()} color="warning">Add New Language</Button>
           <form style={{width: "100%"}} onSubmit={formik.handleSubmit}>
             {page === 1 && <Text h4 color="primary">Common</Text>}
             {
