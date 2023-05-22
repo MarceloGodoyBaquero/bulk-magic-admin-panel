@@ -327,8 +327,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`editMerchantProfileScreen.${key}`}
+                      name={`editMerchantProfileScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -348,8 +348,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`loginBuyerScreen.${key}`}
+                      name={`loginBuyerScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -370,8 +370,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`signUpBuyerScreen.${key}`}
+                      name={`signUpBuyerScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -392,8 +392,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`editBuyerProfileScreen.${key}`}
+                      name={`editBuyerProfileScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -414,8 +414,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`resultSearchScreen.${key}`}
+                      name={`resultSearchScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -436,8 +436,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`ModalMenuComponent.${key}`}
+                      name={`ModalMenuComponent.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -458,8 +458,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`ModalBuyerMenuComponent.${key}`}
+                      name={`ModalBuyerMenuComponent.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -479,8 +479,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`dashboardScreen.${key}`}
+                      name={`dashboardScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -501,8 +501,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`dashboardBuyerScreen.${key}`}
+                      name={`dashboardBuyerScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -523,8 +523,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`createBulkVoucherScreen.${key}`}
+                      name={`createBulkVoucherScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -544,8 +544,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`vendorsPageScreen.${key}`}
+                      name={`vendorsPageScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -565,8 +565,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`itemsSellingScreen.${key}`}
+                      name={`itemsSellingScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -586,8 +586,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`paymentsConfirmScreen.${key}`}
+                      name={`paymentsConfirmScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -607,8 +607,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`paymentsConfirmBuyerScreen.${key}`}
+                      name={`paymentsConfirmBuyerScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -628,8 +628,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`salesRedemptionHistoryScreen.${key}`}
+                      name={`salesRedemptionHistoryScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -649,8 +649,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`myVouchersScreen.${key}`}
+                      name={`myVouchersScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -670,8 +670,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`scanRedemptionScreen.${key}`}
+                      name={`scanRedemptionScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -691,8 +691,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`scanMerchantQrScreen.${key}`}
+                      name={`scanMerchantQrScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -712,8 +712,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`redemptionCodeScreen.${key}`}
+                      name={`redemptionCodeScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -733,8 +733,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`voucherRedemptionScreen.${key}`}
+                      name={`voucherRedemptionScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -754,8 +754,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`voucherValidScreen.${key}`}
+                      name={`voucherValidScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -775,8 +775,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`voucherInvalidScreen.${key}`}
+                      name={`voucherInvalidScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -796,8 +796,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`forgotPasswordScreen.${key}`}
+                      name={`forgotPasswordScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -817,8 +817,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`resetPasswordScreen.${key}`}
+                      name={`resetPasswordScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -838,8 +838,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`HowItWorksBuyerScreen.${key}`}
+                      name={`HowItWorksBuyerScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -859,8 +859,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`VerifyOtpScreen.${key}`}
-                      name={`VerifyOtpScreen.${key}`}
+                      id={`HowItWorksMerchantScreen.${key}`}
+                      name={`HowItWorksMerchantScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
