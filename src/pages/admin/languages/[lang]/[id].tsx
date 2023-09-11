@@ -66,6 +66,7 @@ export default function Languages() {
       dashboardScreen: {},
       dashboardBuyerScreen: {},
       createBulkVoucherScreen: {},
+      editBulkVoucherScreen: {},
       vendorsPageScreen: {},
       itemsSellingScreen: {},
       paymentsConfirmScreen: {},
@@ -82,6 +83,7 @@ export default function Languages() {
       resetPasswordScreen: {},
       HowItWorksBuyerScreen: {},
       HowItWorksMerchantScreen: {},
+      modalPhoto: {}
     },
     onSubmit: values => {
       langUpdate(langName, lang, values)
@@ -146,7 +148,10 @@ export default function Languages() {
     setLangName(router.query.lang as string)
 
     langList()
-      .then(r => setLanguages(r.data.langsArray))
+      .then(r => {
+        console.log(r)
+        setLanguages(r.data.langsArray);
+      })
       .catch(e => console.log(e));
 
     langSearch(router.query.lang as string, router.query.id as string)
@@ -871,7 +876,48 @@ export default function Languages() {
                 );
               })
             }
-            <Pagination total={32} initialPage={1} onChange={(e) => setPage(e)}/>
+            {page === 33 && <Text h4 color="primary">Photo Modal</Text>}
+            {
+              page === 33 && Object?.entries(formik?.values?.modalPhoto)?.map(([key, value]) => {
+                return (
+                  <div key={key}>
+                    <Text h6>{key}</Text>
+                    <Textarea
+                      key={key}
+                      fullWidth
+                      id={`HowItWorksMerchantScreen.${key}`}
+                      name={`HowItWorksMerchantScreen.${key}`}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      // @ts-ignore
+                      value={value}
+                    />
+                    <Spacer y={1}/>
+                  </div>
+                );
+              })
+            }
+            {
+              page === 34 && Object?.entries(formik?.values?.editBulkVoucherScreen)?.map(([key, value]) => {
+                return (
+                  <div key={key}>
+                    <Text h6>{key}</Text>
+                    <Textarea
+                      key={key}
+                      fullWidth
+                      id={`HowItWorksMerchantScreen.${key}`}
+                      name={`HowItWorksMerchantScreen.${key}`}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      // @ts-ignore
+                      value={value}
+                    />
+                    <Spacer y={1}/>
+                  </div>
+                );
+              })
+            }
+            <Pagination total={34} initialPage={1} onChange={(e) => setPage(e)}/>
             <Spacer y={1}/>
             <Button type="submit">
               Save
@@ -925,3 +971,7 @@ export default function Languages() {
     </>
   );
 }
+
+//      editBulkVoucherScreen: {
+//         type: Object
+//       },
