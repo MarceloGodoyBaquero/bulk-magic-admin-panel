@@ -885,8 +885,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`HowItWorksMerchantScreen.${key}`}
-                      name={`HowItWorksMerchantScreen.${key}`}
+                      id={`modalPhoto.${key}`}
+                      name={`modalPhoto.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
@@ -905,8 +905,8 @@ export default function Languages() {
                     <Textarea
                       key={key}
                       fullWidth
-                      id={`HowItWorksMerchantScreen.${key}`}
-                      name={`HowItWorksMerchantScreen.${key}`}
+                      id={`editBulkVoucherScreen.${key}`}
+                      name={`editBulkVoucherScreen.${key}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       // @ts-ignore
