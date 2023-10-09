@@ -93,6 +93,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
       </Container>
     );
   }
+
   return (
     <>
       <div className={"desktop-view"}>
@@ -112,6 +113,7 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
             <Table.Column align="center">Phone Number</Table.Column>
             <Table.Column align="center">Email Address</Table.Column>
             <Table.Column align="center">Store Name</Table.Column>
+            <Table.Column align="center">Items for Sale</Table.Column>
             <Table.Column align="center">Status</Table.Column>
             <Table.Column align="center">Transaction Totals</Table.Column>
           </Table.Header>
@@ -124,6 +126,8 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
                   <Table.Cell>{item.phone ? item.phone.split("-")[1] : "-"}</Table.Cell>
                   <Table.Cell>{item.email ? item.email : "-"}</Table.Cell>
                   <Table.Cell>{item.username}</Table.Cell>
+                  {/*@ts-ignore*/}
+                  <Table.Cell>{item?.vouchers?.filter(e => e.active === true)?.length}</Table.Cell>
                   <Table.Cell>
                     <Badge css={{cursor: "pointer"}} onClick={() => handler(item._id, item.username, item.active)}
                            color={item.deletion ? "error" : item.active ? "primary" : "warning"}>
@@ -173,6 +177,10 @@ function DataTable({data, isLoading}: { data: any, isLoading: any }) {
                   </Text>
                   <Text h5>
                     Transaction Totals (Local Currency): ${item.total}
+                  </Text>
+                  <Text h5>
+                    {/*@ts-ignore*/}
+                    Items for Sale: {item?.vouchers?.filter(e => e.active === true)?.length}
                   </Text>
                 </Card.Body>
                 <Card.Divider/>
@@ -257,6 +265,7 @@ export default function Merchants() {
     }
   };
 
+  console.log(data)
 
   return (
     <>

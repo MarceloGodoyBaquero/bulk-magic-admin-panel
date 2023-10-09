@@ -40,7 +40,7 @@ export default function Home() {
       .catch(e => {
         console.log(e);
         setLoading(false);
-        return toast.error(e.response.data.message)
+        return toast.error(e?.response?.data?.message)
       });
   };
 
